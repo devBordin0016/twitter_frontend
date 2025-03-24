@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { colors } from '../../../styles'
+import { colors } from '../../styles'
 
-export const Columns = styled.div`
+export const SplitLayout = styled.div`
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr;

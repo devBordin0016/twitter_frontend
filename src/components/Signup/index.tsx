@@ -2,10 +2,10 @@ import { colors, InputGlobal } from '../../styles'
 import Button from '../Button'
 import { Content, Title } from './styles'
 
-const Login = () => {
+const Signup = () => {
   return (
     <Content>
-      <Title>Entrar no X</Title>
+      <Title>Criar sua conta</Title>
       <form action="">
         <InputGlobal>
           <input type="text" name="name" id="name" placeholder="" />
@@ -14,6 +14,15 @@ const Login = () => {
         <InputGlobal>
           <input type="text" name="password" id="password" placeholder="" />
           <label htmlFor="password">Senha</label>
+        </InputGlobal>
+        <InputGlobal>
+          <input
+            type="text"
+            name="comfirmPassword"
+            id="comfirmPassword"
+            placeholder=""
+          />
+          <label htmlFor="comfirmPassword">Confirmar senha</label>
         </InputGlobal>
         <Button
           type="button"
@@ -24,9 +33,8 @@ const Login = () => {
           Avançar
         </Button>
       </form>
-      <p>Não tem uma conta? Inscreva-se</p>
     </Content>
   )
 }
 
-export default Login
+export default Signup

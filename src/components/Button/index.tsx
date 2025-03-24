@@ -5,7 +5,7 @@ type Props = {
   type: 'button' | 'link'
   title: string
   to?: string
-  onClick: () => void
+  onClick?: () => void
   children: string
   bgColor?: string
   textColor?: string

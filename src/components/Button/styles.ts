@@ -16,12 +16,6 @@ export const ButtonContainer = styled.button<{
   width: 100%;
   border-radius: 16px;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
-
-  &:hover {
-    filter: brightness(0.9);
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-  }
 `
 export const ButtonLink = styled(Link)<{
   $bgColor?: string
@@ -36,10 +30,4 @@ export const ButtonLink = styled(Link)<{
   padding: 8px 0;
   border-radius: 16px;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
-
-  &:hover {
-    filter: brightness(0.9);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
 `
