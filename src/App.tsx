@@ -3,12 +3,17 @@ import { Provider } from 'react-redux'
 
 import { GlobalCss } from './styles'
 import Home from './pages/Home'
+import Feed from './pages/Feed'
 import { store } from './store'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />
+  },
+  {
+    path: '/feed',
+    element: <Feed />
   }
 ])
 
