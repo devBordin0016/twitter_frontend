@@ -7,5 +7,5 @@ export const Container = styled.div`
 export const MainContainer = styled.main`
   margin-left: 272px;
   display: flex;
-  gap: 20px;
+  gap: 32px;
 `

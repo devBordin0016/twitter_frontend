@@ -11,6 +11,7 @@ import tape from '../../assets/tape.svg'
 import ray from '../../assets/ray.svg'
 import cloud from '../../assets/cloud.svg'
 import community from '../../assets/community.svg'
+import { ProfileAvatar, ProfileName } from '../../styles'
 
 const BarLeft = () => (
   <Header>
@@ -63,10 +64,12 @@ const BarLeft = () => (
         Mais
       </p>
     </Menu>
-    <button type="button">Postar</button>
+    <button title="postar" type="button">
+      Postar
+    </button>
     <Profile>
-      <span>J</span>
-      <p>João Vitor Brito</p>
+      <ProfileAvatar>J</ProfileAvatar>
+      <ProfileName>João Vitor Brito</ProfileName>
     </Profile>
   </Header>
 )

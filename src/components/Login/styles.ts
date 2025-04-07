@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
+import { ButtonLink } from '../Button/styles'
 
 export const Content = styled.div`
   margin: 0 136px;
 
-  button {
+  ${ButtonLink} {
     margin-top: 32px;
     transition: 0.3s ease-in-out;
     background-color: ${colors.black};
+    border: none;
 
     &:hover {
       filter: brightness(0.9);

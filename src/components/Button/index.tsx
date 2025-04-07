@@ -9,6 +9,7 @@ type Props = {
   children: string
   bgColor?: string
   textColor?: string
+  disabled?: boolean
 }
 
 const Button = ({
@@ -18,7 +19,8 @@ const Button = ({
   to,
   onClick,
   bgColor,
-  textColor
+  textColor,
+  disabled
 }: Props) => {
   if (type === 'button')
     return (
@@ -28,6 +30,7 @@ const Button = ({
         onClick={onClick}
         $bgColor={bgColor}
         $textColor={textColor || colors.black}
+        disabled={disabled}
       >
         {children}
       </ButtonContainer>

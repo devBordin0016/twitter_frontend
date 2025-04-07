@@ -32,6 +32,7 @@ export const Container = styled.div`
   span {
     color: ${colors.black};
     font-size: 14px;
+    padding: 8px;
   }
 
   p {

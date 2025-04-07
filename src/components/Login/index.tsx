@@ -16,9 +16,9 @@ const Login = () => {
           <label htmlFor="password">Senha</label>
         </InputGlobal>
         <Button
-          type="button"
-          bgColor={colors.darkGray}
-          title="Avançar para loguin"
+          type="link"
+          bgColor={colors.black}
+          title="Avançar para pagina de feed"
           textColor={colors.white}
         >
           Avançar

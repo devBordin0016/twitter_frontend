@@ -8,7 +8,7 @@ export const Header = styled.header`
 
   button {
     margin-top: 16px;
-    max-width: 216px;
+    max-width: 232px;
     width: 100%;
     font-size: 16px;
     font-weight: 700;
@@ -24,18 +24,18 @@ export const Menu = styled.div`
   h1 {
     padding: 8px;
     img {
-      width: 32px;
+      width: 26px;
     }
   }
 
   p {
-    padding: 8px;
+    padding: 12px 8px;
     font-size: 20px;
     display: flex;
     align-items: center;
 
     img {
-      width: 32px;
+      width: 26px;
       margin-right: 16px;
     }
   }
@@ -46,17 +46,4 @@ export const Profile = styled.div`
   align-items: center;
   margin-top: 48px;
   padding: 0 8px;
-
-  span {
-    padding: 8px 16px;
-    font-size: 24px;
-    color: ${colors.white};
-    background-color: orange;
-    border-radius: 32px;
-    margin-right: 16px;
-  }
-
-  p {
-    font-weight: 700;
-  }
 `

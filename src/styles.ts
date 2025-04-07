@@ -14,12 +14,15 @@ export const GlobalCss = createGlobalStyle`
     padding:0;
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
+    list-style:none;
   }
 
   body {
     background-color: ${colors.white}
     color:${colors.black};
+    overflow-y: scroll;
   }
+
 `
 export const InputGlobal = styled.div`
   position: relative;
@@ -59,4 +62,21 @@ export const InputGlobal = styled.div`
     font-size: 12px;
     color: ${colors.blue};
   }
+`
+
+export const ProfileAvatar = styled.span`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: ${colors.white};
+  background-color: orange;
+  border-radius: 50%;
+`
+
+export const ProfileName = styled.span`
+  margin-left: 8px;
+  font-weight: 700;
 `
