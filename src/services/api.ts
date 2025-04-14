@@ -137,7 +137,8 @@ export const {
   useGetCurrentUserQuery,
   useFollowUserMutation,
   useGetAllUsersQuery,
-  useUnfollowUserMutation
+  useUnfollowUserMutation,
+  useLazyGetCurrentUserQuery
 } = api
 
 export default api

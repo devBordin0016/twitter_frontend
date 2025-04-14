@@ -20,6 +20,7 @@ import statisticIcon from '../../assets/statistic.svg'
 import commentsIcon from '../../assets/comments.svg'
 
 import * as S from './styles'
+import Loader from '../Loader'
 
 const Posts = () => {
   const [text, setText] = useState('')
@@ -169,22 +170,12 @@ const Posts = () => {
       </S.TweetContainer>
 
       {activeTab === 'forYou' && (
-        <ul>
-          {isLoadingForYou ? (
-            <p>Carregando tweets...</p>
-          ) : (
-            renderTweets(forYouTweets)
-          )}
-        </ul>
+        <ul>{isLoadingForYou ? <Loader /> : renderTweets(forYouTweets)}</ul>
       )}
 
       {activeTab === 'following' && (
         <ul>
-          {isLoadingFollowing ? (
-            <p>Carregando tweets...</p>
-          ) : (
-            renderTweets(followingTweets)
-          )}
+          {isLoadingFollowing ? <Loader /> : renderTweets(followingTweets)}
         </ul>
       )}
     </S.MainContent>
