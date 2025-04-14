@@ -2,7 +2,11 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-import { useLoginMutation } from '../../services/api'
+import {
+  useLazyGetCurrentUserQuery,
+  useLoginMutation
+} from '../../services/api'
+
 import { colors, InputGlobal } from '../../styles'
 import Button from '../Button'
 import { Content, Title } from './styles'
@@ -10,7 +14,7 @@ import { Content, Title } from './styles'
 const Login = () => {
   const navigate = useNavigate()
   const [login, { isError, isSuccess, data }] = useLoginMutation()
-
+  const [fetchCurrentUser] = useLazyGetCurrentUserQuery()
   const form = useFormik({
     initialValues: {
       username: '',
@@ -30,6 +34,7 @@ const Login = () => {
 
   if (isSuccess && data?.access) {
     localStorage.setItem('access_token', data.access)
+    fetchCurrentUser()
     navigate('/feed')
   }
 
