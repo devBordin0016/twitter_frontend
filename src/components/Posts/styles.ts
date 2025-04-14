@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { ButtonContainer } from '../Button/styles'
 import { transparentize } from 'polished'
 
-export const Container = styled.div`
+export const MainContent = styled.div`
   max-width: 600px;
   width: 100%;
   min-height: 100vh;
@@ -12,6 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   position: relative;
 `
+
 export const SelectPostsWrapper = styled.div`
   position: sticky;
   top: 0;
@@ -22,6 +22,7 @@ export const SelectPostsWrapper = styled.div`
   display: flex;
   justify-content: center;
 `
+
 export const SelectPosts = styled.div`
   width: 100%;
   display: flex;
@@ -48,7 +49,8 @@ export const SelectPosts = styled.div`
     font-weight: 700;
   }
 `
-export const Section = styled.div`
+
+export const TweetContainer = styled.div`
   padding: 8px 16px;
   display: flex;
   border-bottom: 1px solid ${colors.gray};
@@ -67,14 +69,15 @@ export const Section = styled.div`
     margin-right: 0;
   }
 
-  ${ButtonContainer} {
+  button {
     max-width: 80px;
     border: none;
     padding: 8px 16px;
     float: right;
   }
 `
-export const Posting = styled.div`
+
+export const TweetInputWrapper = styled.div`
   width: 100%;
   padding: 8px 8px 40px;
   border-bottom: 1px solid ${colors.gray};
@@ -89,5 +92,38 @@ export const Posting = styled.div`
     border: none;
     outline: none;
     color: ${colors.darkGray};
+  }
+`
+
+export const TweetMeta = styled.div`
+  display: flex;
+  align-items: center;
+
+  p {
+    padding-top: 2px;
+    font-size: 14px;
+    color: ${colors.darkGray};
+  }
+`
+
+export const TweetActions = styled.ul`
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+
+  li {
+    display: flex;
+    margin-right: 104px;
+    align-items: center;
+
+    img {
+      width: 18px;
+    }
+
+    span {
+      font-size: 14px;
+    }
   }
 `

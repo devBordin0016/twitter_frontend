@@ -1,49 +1,39 @@
 import { colors } from '../../styles'
-import { ButtonContainer, ButtonLink } from './styles'
+import { ButtonContainer } from './styles'
 
 type Props = {
-  type: 'button' | 'link'
+  type?: 'button' | 'submit'
   title: string
-  to?: string
   onClick?: () => void
   children: string
   bgColor?: string
   textColor?: string
   disabled?: boolean
+  className?: string
 }
 
 const Button = ({
-  type,
   title,
   children,
-  to,
   onClick,
   bgColor,
-  textColor,
-  disabled
+  textColor = colors.black,
+  disabled,
+  type = 'button',
+  className
 }: Props) => {
-  if (type === 'button')
-    return (
-      <ButtonContainer
-        type="button"
-        title={title}
-        onClick={onClick}
-        $bgColor={bgColor}
-        $textColor={textColor || colors.black}
-        disabled={disabled}
-      >
-        {children}
-      </ButtonContainer>
-    )
   return (
-    <ButtonLink
-      to={to as string}
+    <ButtonContainer
+      type={type}
       title={title}
+      onClick={onClick}
+      disabled={disabled}
       $bgColor={bgColor}
-      $textColor={textColor || colors.black}
+      $textColor={textColor}
+      className={className}
     >
       {children}
-    </ButtonLink>
+    </ButtonContainer>
   )
 }
 

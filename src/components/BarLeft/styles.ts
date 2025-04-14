@@ -20,6 +20,7 @@ export const Header = styled.header`
     cursor: pointer;
   }
 `
+
 export const Menu = styled.div`
   h1 {
     padding: 8px;
@@ -46,4 +47,20 @@ export const Profile = styled.div`
   align-items: center;
   margin-top: 48px;
   padding: 0 8px;
+  justify-content: space-between;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 40px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
 `

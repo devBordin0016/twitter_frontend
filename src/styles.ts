@@ -62,6 +62,10 @@ export const InputGlobal = styled.div`
     font-size: 12px;
     color: ${colors.blue};
   }
+
+  small {
+    color: #e53935;
+  }
 `
 
 export const ProfileAvatar = styled.span`
@@ -72,7 +76,6 @@ export const ProfileAvatar = styled.span`
   justify-content: center;
   font-size: 24px;
   color: ${colors.white};
-  background-color: orange;
   border-radius: 50%;
 `
 

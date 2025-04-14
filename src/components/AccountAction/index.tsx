@@ -1,11 +1,11 @@
-import closeIcon from '../../assets/close.svg'
+import { useState } from 'react'
 import { colors } from '../../styles'
 import Button from '../Button'
-import { CloseBar, Container, LogoImg, Modal, ModalContent } from './styles'
+import closeIcon from '../../assets/close.svg'
 import logo from '../../assets/icon.svg'
 import Signup from '../Signup'
 import Login from '../Login'
-import { useState } from 'react'
+import * as S from './styles'
 
 const AccountAction = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -21,10 +21,9 @@ const AccountAction = () => {
   }
 
   return (
-    <Container>
+    <S.Container>
       <h3>Inscreva-se hoje</h3>
       <Button
-        type="button"
         title="Abrir aba para criar conta"
         onClick={() => openModal('signup')}
         bgColor={colors.blue}
@@ -39,26 +38,38 @@ const AccountAction = () => {
       <p>Já tem uma conta?</p>
 
       <Button
-        type="button"
+        className="border-button"
         title="Abrir aba para entrar"
         onClick={() => openModal('login')}
         textColor={colors.blue}
       >
         Entrar
       </Button>
+
       {isOpenModal && (
-        <Modal>
-          <ModalContent>
-            <CloseBar>
+        <S.ModalWrapper>
+          <S.ModalContent>
+            <S.CloseBar>
               <img src={closeIcon} alt="Fechar aba" onClick={closeModal} />
-              <LogoImg src={logo} alt="Logo X" />
-            </CloseBar>
-            {modalType === 'login' ? <Login /> : <Signup />}
-          </ModalContent>
+              <S.LogoImg src={logo} alt="Logo X" />
+            </S.CloseBar>
+            {modalType === 'login' ? (
+              <>
+                <Login />
+                <S.ForRegistration>
+                  Não tem uma conta?{' '}
+                  <span onClick={() => openModal('signup')}>Inscreva-se</span>
+                </S.ForRegistration>
+              </>
+            ) : (
+              <Signup />
+            )}
+          </S.ModalContent>
           <div className="overlay" onClick={closeModal}></div>
-        </Modal>
+        </S.ModalWrapper>
       )}
-    </Container>
+    </S.Container>
   )
 }
+
 export default AccountAction

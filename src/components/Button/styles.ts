@@ -1,41 +1,33 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import { colors } from '../../styles'
 
-export const ButtonContainer = styled.button<{
+type ButtonProps = {
   $bgColor?: string
   $textColor: string
-}>`
-  border: 1px solid ${colors.gray};
-  color: ${({ $textColor }) => $textColor || colors.black};
-  background-color: ${({ $bgColor }) => $bgColor || 'transparent'};
-  text-align: center;
+}
+
+export const ButtonContainer = styled.button<ButtonProps>`
+  width: 100%;
+  padding: 8px 0;
   font-size: 15px;
   font-weight: 700;
-  padding: 8px 0;
-  width: 100%;
+  text-align: center;
+  border: none;
   border-radius: 16px;
+
+  color: ${({ $textColor }) => $textColor || colors.black};
+  background-color: ${({ $bgColor }) => $bgColor || 'transparent'};
+
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
 
   &:disabled {
     opacity: 0.5;
     cursor: default;
   }
-`
-export const ButtonLink = styled(Link)<{
-  $bgColor?: string
-  $textColor: string
-}>`
-  display: inline-block;
-  color: ${({ $textColor }) => $textColor || colors.black};
-  background-color: ${({ $bgColor }) => $bgColor || 'transparent'};
-  text-align: center;
-  font-size: 15px;
-  font-weight: 700;
-  width: 100%;
-  padding: 8px 0;
-  border-radius: 16px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
 `

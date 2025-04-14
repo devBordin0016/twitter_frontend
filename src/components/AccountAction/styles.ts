@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
-import { ButtonContainer } from '../Button/styles'
 
 export const Container = styled.div`
   max-width: 296px;
-  with: 100%;
+  width: 100%;
   text-align: center;
 
   h3 {
@@ -35,20 +34,17 @@ export const Container = styled.div`
     padding: 8px;
   }
 
-  p {
+  > p {
     font-weight: 700;
     margin-bottom: 18px;
   }
 
-  ${ButtonContainer} {
-    transition: 0.3s ease-in-out;
-    &:hover {
-      filter: brightness(0.9);
-      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-    }
+  .border-button {
+    border: 1px solid ${colors.gray};
   }
 `
-export const Modal = styled.div`
+
+export const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -67,6 +63,7 @@ export const Modal = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
   }
 `
+
 export const ModalContent = styled.div`
   position: relative;
   z-index: 1;
@@ -78,6 +75,7 @@ export const ModalContent = styled.div`
   height: 100%;
   padding: 8px;
 `
+
 export const CloseBar = styled.div`
   display: flex;
   align-items: center;
@@ -97,6 +95,21 @@ export const CloseBar = styled.div`
     }
   }
 `
+
+export const ForRegistration = styled.p`
+  font-size: 14px;
+  margin-top: 32px;
+  color: ${colors.darkGray};
+  font-weight: 400;
+
+  span {
+    color: ${colors.blue};
+    font-size: 14px;
+    padding: 0;
+    cursor: pointer;
+  }
+`
+
 export const LogoImg = styled.img`
   position: absolute;
   left: 50%;
