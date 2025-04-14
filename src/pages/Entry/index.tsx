@@ -3,7 +3,7 @@ import AccountAction from '../../components/AccountAction'
 import { SplitLayout, Footer, Logo, SectionLoguin } from './styles'
 import logo from '../../assets/icon.svg'
 
-const Home = () => (
+const Entry = () => (
   <>
     <div>
       <SplitLayout>
@@ -31,4 +31,4 @@ const Home = () => (
   </>
 )
 
-export default Home
+export default Entry
