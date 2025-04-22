@@ -1,3 +1,4 @@
+import { transparentize } from 'polished'
 import { createGlobalStyle, styled } from 'styled-components'
 
 export const colors = {
@@ -82,4 +83,22 @@ export const ProfileAvatar = styled.span`
 export const ProfileName = styled.span`
   margin-left: 8px;
   font-weight: 700;
+`
+export const MainContent = styled.div`
+  max-width: 600px;
+  width: 100%;
+  min-height: 100vh;
+  border-left: 1px solid ${colors.gray};
+  border-right: 1px solid ${colors.gray};
+  flex-direction: column;
+  position: relative;
+`
+export const SelectPostsWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  background: ${transparentize(0.05, colors.white)};
+  border-bottom: 1px solid ${colors.gray};
+  z-index: 1;
+  display: flex;
+  justify-content: center;
 `

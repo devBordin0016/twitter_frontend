@@ -20,6 +20,7 @@ type TweetResponse = {
   username: string
   content: string
   created_at: string
+  likes_count: number
 }
 
 type TweetPayload = {
@@ -45,7 +46,7 @@ type FollowResponse = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://vitorbri.pythonanywhere.com/api',
+    baseUrl: '	http://localhost:8000/api',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('access_token')
       if (token) {
@@ -120,7 +121,7 @@ const api = createApi({
     likeTweet: builder.mutation<{ status: string }, number>({
       query: (id) => ({
         url: `tweets/${id}/like/`,
-        method: 'PATH'
+        method: 'POST'
       }),
       invalidatesTags: ['Tweets']
     })
@@ -138,7 +139,8 @@ export const {
   useFollowUserMutation,
   useGetAllUsersQuery,
   useUnfollowUserMutation,
-  useLazyGetCurrentUserQuery
+  useLazyGetCurrentUserQuery,
+  useLikeTweetMutation
 } = api
 
 export default api

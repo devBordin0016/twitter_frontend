@@ -11,7 +11,8 @@ import {
   useGetTweetsQuery,
   useGetFollowingTweetsQuery,
   useCreateTweetMutation,
-  useGetCurrentUserQuery
+  useGetCurrentUserQuery,
+  useLikeTweetMutation
 } from '../../services/api'
 
 import shareIcon from '../../assets/share.svg'
@@ -28,6 +29,7 @@ const Posts = () => {
   const [activeTab, setActiveTab] = useState<'forYou' | 'following'>('forYou')
   const [createTweet] = useCreateTweetMutation()
   const { data: user } = useGetCurrentUserQuery()
+  const [likeTweet] = useLikeTweetMutation()
 
   const { data: forYouTweets = [], isLoading: isLoadingForYou } =
     useGetTweetsQuery()
@@ -43,6 +45,10 @@ const Posts = () => {
       textarea.style.height = '28px'
       textarea.style.height = `${textarea.scrollHeight}px`
     }
+  }
+
+  const handleLike = (tweetId: number) => {
+    likeTweet(tweetId)
   }
 
   const handlePostTweet = () => {
@@ -82,7 +88,7 @@ const Posts = () => {
       return (
         <li key={tweet.id}>
           <S.TweetContainer>
-            <div>
+            <div className="width-profile">
               <ProfileAvatar style={{ backgroundColor: avatarColor }}>
                 {firstLetter}
               </ProfileAvatar>
@@ -92,24 +98,28 @@ const Posts = () => {
                 <ProfileName>{tweet.username}</ProfileName>
                 <p>{'· ' + formatRelativeDate(tweet.created_at)}</p>
               </S.TweetMeta>
-              <p>{tweet.content}</p>
+              <S.TweetContent>{tweet.content}</S.TweetContent>
               <S.TweetActions>
-                <li>
+                <div>
                   <img src={commentsIcon} alt="Comentários" />
                   <span>0</span>
-                </li>
-                <li>
+                </div>
+                <div>
                   <img src={shareIcon} alt="Compartilhamentos" />
                   <span>0</span>
-                </li>
-                <li>
-                  <img src={heartIcon} alt="Curtidas" />
-                  <span>0</span>
-                </li>
-                <li>
+                </div>
+                <div>
+                  <img
+                    onClick={() => handleLike(tweet.id)}
+                    src={heartIcon}
+                    alt="Curtidas"
+                  />
+                  <span>{tweet.likes_count}</span>
+                </div>
+                <div>
                   <img src={statisticIcon} alt="Visualizações" />
                   <span>0</span>
-                </li>
+                </div>
               </S.TweetActions>
             </div>
           </S.TweetContainer>
@@ -139,7 +149,7 @@ const Posts = () => {
       </S.SelectPostsWrapper>
 
       <S.TweetContainer>
-        <div>
+        <div className="width-profile">
           {user && (
             <ProfileAvatar style={{ backgroundColor: avatarColor }}>
               {firstLetter}

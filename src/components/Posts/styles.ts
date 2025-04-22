@@ -15,7 +15,6 @@ export const MainContent = styled.div`
 export const SelectPostsWrapper = styled.div`
   position: sticky;
   top: 0;
-  width: 100%;
   background: ${transparentize(0.05, colors.white)};
   border-bottom: 1px solid ${colors.gray};
   z-index: 1;
@@ -51,17 +50,18 @@ export const SelectPosts = styled.div`
 `
 
 export const TweetContainer = styled.div`
+  width: 100%;
   padding: 8px 16px;
   display: flex;
   border-bottom: 1px solid ${colors.gray};
 
-  > div {
-    padding-top: 8px;
+  .width-profile {
+    width: 40px;
   }
 
-  p {
-    margin: 8px 0 8px 8px;
-    font-size: 15px;
+  > div {
+    padding-top: 8px;
+    width: 100%;
   }
 
   .text-width {
@@ -98,6 +98,7 @@ export const TweetInputWrapper = styled.div`
 export const TweetMeta = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   p {
     padding-top: 2px;
@@ -106,17 +107,18 @@ export const TweetMeta = styled.div`
   }
 `
 
-export const TweetActions = styled.ul`
-  margin-top: 24px;
+export const TweetActions = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 0 8px;
+  margin-top: 24px;
+  width: 100%;
+  justify-content: space-between;
 
-  li {
+  div {
     display: flex;
-    margin-right: 104px;
     align-items: center;
+    flex: 1;
+    width: 100%;
 
     img {
       width: 18px;
@@ -126,4 +128,12 @@ export const TweetActions = styled.ul`
       font-size: 14px;
     }
   }
+`
+
+export const TweetContent = styled.p`
+  margin: 8px 0 8px 8px;
+  font-size: 15px;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-word;
 `
