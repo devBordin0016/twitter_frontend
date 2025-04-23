@@ -2,16 +2,6 @@ import styled from 'styled-components'
 import { colors } from '../../styles'
 import { transparentize } from 'polished'
 
-export const MainContent = styled.div`
-  max-width: 600px;
-  width: 100%;
-  min-height: 100vh;
-  border-left: 1px solid ${colors.gray};
-  border-right: 1px solid ${colors.gray};
-  flex-direction: column;
-  position: relative;
-`
-
 export const SelectPostsWrapper = styled.div`
   position: sticky;
   top: 0;
@@ -49,25 +39,9 @@ export const SelectPosts = styled.div`
   }
 `
 
-export const TweetContainer = styled.div`
+export const TweetSections = styled.div`
+  padding-top: 8px;
   width: 100%;
-  padding: 8px 16px;
-  display: flex;
-  border-bottom: 1px solid ${colors.gray};
-
-  .width-profile {
-    width: 40px;
-  }
-
-  > div {
-    padding-top: 8px;
-    width: 100%;
-  }
-
-  .text-width {
-    width: 100%;
-    margin-right: 0;
-  }
 
   button {
     max-width: 80px;
@@ -75,6 +49,21 @@ export const TweetContainer = styled.div`
     padding: 8px 16px;
     float: right;
   }
+
+  &.width-profile {
+    width: 40px;
+  }
+  .text-width {
+    width: 100%;
+    margin-right: 0;
+  }
+`
+
+export const TweetContainer = styled.div`
+  width: 100%;
+  padding: 8px 16px;
+  display: flex;
+  border-bottom: 1px solid ${colors.gray};
 `
 
 export const TweetInputWrapper = styled.div`
@@ -99,12 +88,6 @@ export const TweetMeta = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
-  p {
-    padding-top: 2px;
-    font-size: 14px;
-    color: ${colors.darkGray};
-  }
 `
 
 export const TweetActions = styled.div`
@@ -121,7 +104,13 @@ export const TweetActions = styled.div`
     width: 100%;
 
     img {
+      cursor: pointer;
       width: 18px;
+      &:hover {
+        box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
+      }
     }
 
     span {

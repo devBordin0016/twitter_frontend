@@ -1,36 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useRef, useState } from 'react'
-import { formatDistanceToNowStrict } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
 
-import { colors, ProfileAvatar, ProfileName } from '../../styles'
-import { getFirstLetterAndColor } from '../../utils'
+import { colors, MainContent, ProfileAvatar, ProfileName } from '../../styles'
+import { formatRelativeDate, getFirstLetterAndColor } from '../../utils'
 import Button from '../Button'
 
 import {
   useGetTweetsQuery,
   useGetFollowingTweetsQuery,
   useCreateTweetMutation,
-  useGetCurrentUserQuery,
   useLikeTweetMutation
 } from '../../services/api'
 
 import shareIcon from '../../assets/share.svg'
-import heartIcon from '../../assets/heart.svg'
 import statisticIcon from '../../assets/statistic.svg'
+import heartIcon from '../../assets/heart.svg'
+import heartIconRed from '../../assets/heartRed.svg'
 import commentsIcon from '../../assets/comments.svg'
 
 import * as S from './styles'
 import Loader from '../Loader'
+import UserAvatar from '../UserAvatar'
+import { useNavigate } from 'react-router-dom'
 
 const Posts = () => {
+  const navigate = useNavigate()
   const [text, setText] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
   const [activeTab, setActiveTab] = useState<'forYou' | 'following'>('forYou')
   const [createTweet] = useCreateTweetMutation()
-  const { data: user } = useGetCurrentUserQuery()
   const [likeTweet] = useLikeTweetMutation()
-
   const { data: forYouTweets = [], isLoading: isLoadingForYou } =
     useGetTweetsQuery()
   const { data: followingTweets = [], isLoading: isLoadingFollowing } =
@@ -64,21 +63,6 @@ const Posts = () => {
       })
   }
 
-  const formatRelativeDate = (isoDate: string) => {
-    return `há ${formatDistanceToNowStrict(new Date(isoDate), {
-      locale: ptBR
-    })}`
-  }
-
-  let avatarColor = ''
-  let firstLetter = ''
-
-  if (user) {
-    const result = getFirstLetterAndColor(user.username, user.id)
-    avatarColor = result.avatarColor
-    firstLetter = result.firstLetter
-  }
-
   const renderTweets = (tweets: any[]) =>
     tweets.map((tweet) => {
       const { avatarColor, firstLetter } = getFirstLetterAndColor(
@@ -88,21 +72,27 @@ const Posts = () => {
       return (
         <li key={tweet.id}>
           <S.TweetContainer>
-            <div className="width-profile">
+            <S.TweetSections className="width-profile">
               <ProfileAvatar style={{ backgroundColor: avatarColor }}>
                 {firstLetter}
               </ProfileAvatar>
-            </div>
-            <div>
+            </S.TweetSections>
+            <S.TweetSections>
               <S.TweetMeta>
                 <ProfileName>{tweet.username}</ProfileName>
-                <p>{'· ' + formatRelativeDate(tweet.created_at)}</p>
+                <p className="date">
+                  {'· ' + formatRelativeDate(tweet.created_at)}
+                </p>
               </S.TweetMeta>
               <S.TweetContent>{tweet.content}</S.TweetContent>
               <S.TweetActions>
                 <div>
-                  <img src={commentsIcon} alt="Comentários" />
-                  <span>0</span>
+                  <img
+                    src={commentsIcon}
+                    alt="Comentários"
+                    onClick={() => navigate(`/tweet/${tweet.id}`)}
+                  />
+                  <span>{tweet.comments_count}</span>
                 </div>
                 <div>
                   <img src={shareIcon} alt="Compartilhamentos" />
@@ -111,7 +101,7 @@ const Posts = () => {
                 <div>
                   <img
                     onClick={() => handleLike(tweet.id)}
-                    src={heartIcon}
+                    src={tweet.is_liked ? heartIconRed : heartIcon}
                     alt="Curtidas"
                   />
                   <span>{tweet.likes_count}</span>
@@ -121,14 +111,14 @@ const Posts = () => {
                   <span>0</span>
                 </div>
               </S.TweetActions>
-            </div>
+            </S.TweetSections>
           </S.TweetContainer>
         </li>
       )
     })
 
   return (
-    <S.MainContent id="postar">
+    <MainContent id="postar">
       <S.SelectPostsWrapper>
         <S.SelectPosts>
           <button
@@ -149,14 +139,10 @@ const Posts = () => {
       </S.SelectPostsWrapper>
 
       <S.TweetContainer>
-        <div className="width-profile">
-          {user && (
-            <ProfileAvatar style={{ backgroundColor: avatarColor }}>
-              {firstLetter}
-            </ProfileAvatar>
-          )}
-        </div>
-        <div className="text-width">
+        <S.TweetSections className="width-profile">
+          <UserAvatar />
+        </S.TweetSections>
+        <S.TweetSections className="text-width">
           <S.TweetInputWrapper>
             <textarea
               ref={textareaRef}
@@ -176,7 +162,7 @@ const Posts = () => {
           >
             Postar
           </Button>
-        </div>
+        </S.TweetSections>
       </S.TweetContainer>
 
       {activeTab === 'forYou' && (
@@ -188,7 +174,7 @@ const Posts = () => {
           {isLoadingFollowing ? <Loader /> : renderTweets(followingTweets)}
         </ul>
       )}
-    </S.MainContent>
+    </MainContent>
   )
 }
 
