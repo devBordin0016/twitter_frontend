@@ -1,3 +1,6 @@
+import { formatDistanceToNowStrict } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+
 export const getFirstLetterAndColor = (username: string, id: number) => {
   const avatarColors = [
     '#EF4444',
@@ -16,4 +19,10 @@ export const getFirstLetterAndColor = (username: string, id: number) => {
   const lastDigit = Number(String(id).slice(-1))
   const avatarColor = avatarColors[lastDigit]
   return { firstLetter, avatarColor }
+}
+
+export const formatRelativeDate = (isoDate: string) => {
+  return `há ${formatDistanceToNowStrict(new Date(isoDate), {
+    locale: ptBR
+  })}`
 }

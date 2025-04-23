@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Entry from './pages/Entry'
 import Feed from './pages/Feed'
+import Post from './pages/PostPage'
 
 interface Props {
   children: JSX.Element
@@ -26,6 +27,14 @@ const RoutesPages = () => {
         element={
           <PrivateRoute>
             <Feed />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/tweet/:id"
+        element={
+          <PrivateRoute>
+            <Post />
           </PrivateRoute>
         }
       />

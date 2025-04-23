@@ -21,6 +21,8 @@ type TweetResponse = {
   content: string
   created_at: string
   likes_count: number
+  comments_count: number
+  is_liked: boolean
 }
 
 type TweetPayload = {
@@ -44,6 +46,18 @@ type FollowResponse = {
   following: number
 }
 
+type CommentResponse = {
+  id: number
+  content: string
+  tweet: number
+  user: number
+  username: string
+  created_at: string
+}
+
+type CommentPayload = {
+  content: string
+}
 const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '	http://localhost:8000/api',
@@ -71,8 +85,13 @@ const api = createApi({
         body
       })
     }),
+
     getTweets: builder.query<TweetResponse[], void>({
       query: () => 'tweets/',
+      providesTags: ['Tweets']
+    }),
+    getTweet: builder.query<TweetResponse, number>({
+      query: (id) => `tweets/${id}/`,
       providesTags: ['Tweets']
     }),
 
@@ -124,6 +143,25 @@ const api = createApi({
         method: 'POST'
       }),
       invalidatesTags: ['Tweets']
+    }),
+    getComments: builder.query<CommentResponse[], number>({
+      query: (tweetId) => `tweets/${tweetId}/comments/`,
+      providesTags: (result, error, tweetId) => [
+        { type: 'Tweets', id: tweetId }
+      ]
+    }),
+    createComment: builder.mutation<
+      CommentResponse,
+      { tweetId: number; body: CommentPayload }
+    >({
+      query: ({ tweetId, body }) => ({
+        url: `tweets/${tweetId}/comments/`,
+        method: 'POST',
+        body
+      }),
+      invalidatesTags: (result, error, { tweetId }) => [
+        { type: 'Tweets', id: tweetId }
+      ]
     })
   })
 })
@@ -140,7 +178,10 @@ export const {
   useGetAllUsersQuery,
   useUnfollowUserMutation,
   useLazyGetCurrentUserQuery,
-  useLikeTweetMutation
+  useLikeTweetMutation,
+  useGetTweetQuery,
+  useCreateCommentMutation,
+  useGetCommentsQuery
 } = api
 
 export default api

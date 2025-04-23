@@ -1,4 +1,3 @@
-import { transparentize } from 'polished'
 import { createGlobalStyle, styled } from 'styled-components'
 
 export const colors = {
@@ -22,6 +21,28 @@ export const GlobalCss = createGlobalStyle`
     background-color: ${colors.white}
     color:${colors.black};
     overflow-y: scroll;
+  }
+
+  .date {
+    margin-left: 4px;
+    padding-top: 2px;
+    font-size: 14px;
+    color: ${colors.darkGray};
+  }
+  .align {
+    align-items: center;
+  }
+  .display {
+    display: flex;
+  }
+  .padding {
+    padding: 16px 0;
+  }
+  .padding-left {
+    padding-left: 8px;
+  }
+  .padding-tp-bt {
+    padding: 8px 0;
   }
 
 `
@@ -92,13 +113,4 @@ export const MainContent = styled.div`
   border-right: 1px solid ${colors.gray};
   flex-direction: column;
   position: relative;
-`
-export const SelectPostsWrapper = styled.div`
-  position: sticky;
-  top: 0;
-  background: ${transparentize(0.05, colors.white)};
-  border-bottom: 1px solid ${colors.gray};
-  z-index: 1;
-  display: flex;
-  justify-content: center;
 `
