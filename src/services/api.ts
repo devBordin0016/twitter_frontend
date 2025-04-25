@@ -60,10 +60,10 @@ type CommentPayload = {
 }
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://vitorbri.pythonanywhere.com/api',
-    prepareHeaders: (headers) => {
+    baseUrl: 'https://vitorbri.pythonanywhere.com/api/',
+    prepareHeaders: (headers, { endpoint }) => {
       const token = localStorage.getItem('access_token')
-      if (token) {
+      if (token && endpoint !== 'register') {
         headers.set('Authorization', `Bearer ${token}`)
       }
       return headers
