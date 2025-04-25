@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useGetCurrentUserQuery } from '../../services/api'
 import { Header, Menu, Profile } from './styles'
-import { ProfileName } from '../../styles'
+import { ModalContent, ModalWrapper, ProfileName } from '../../styles'
+
 import logo from '../../assets/icon.svg'
 import grok from '../../assets/grok.svg'
 import letter from '../../assets/letter.svg'
@@ -16,91 +17,113 @@ import cloud from '../../assets/cloud.svg'
 import community from '../../assets/community.svg'
 import closeUser from '../../assets/closeUser.svg'
 import UserAvatar from '../UserAvatar'
+import closeIcon from '../../assets/close.svg'
+import { useState } from 'react'
+import AccountSettings from '../AccountSettings'
 
 const BarLeft = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false)
   const { data: user } = useGetCurrentUserQuery()
   const navigate = useNavigate()
+
+  const openModal = () => {
+    setIsOpenModal(true)
+  }
+
+  const closeModal = () => {
+    setIsOpenModal(false)
+  }
 
   const handleLogout = () => {
     localStorage.removeItem('access_token')
     navigate('/entry')
   }
 
-  const handlePostClick = () => {
-    setTimeout(() => {
-      const section = document.getElementById('postar')
-      section?.scrollIntoView({ behavior: 'smooth' })
-    }, 50)
+  const handleTopClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
-    <Header>
-      <Menu>
-        <h1>
-          <img src={logo} alt="logo X" />
-        </h1>
-        <p>
-          <img src={home} alt="icone de home" />
-          Página Inicial
-        </p>
-        <p>
-          <img src={magnifier} alt="icone de explorar" />
-          Explorar
-        </p>
-        <p>
-          <img src={bell} alt="icone de notificação" />
-          Notificações
-        </p>
-        <p>
-          <img src={letter} alt="icone de mensagens" />
-          Mensagens
-        </p>
-        <p>
-          <img src={grok} alt="icone do grok" />
-          Grok
-        </p>
-        <p>
-          <img src={tape} alt="icone de itens salvos" />
-          Itens salvos
-        </p>
-        <p>
-          <img src={community} alt="icone comunidade" />
-          Comunidades
-        </p>
-        <p>
-          <img src={cloud} alt="icone do premium" />
-          Premium
-        </p>
-        <p>
-          <img src={ray} alt="icone do organizações verificadas" />
-          Organizações Ve...
-        </p>
-        <p>
-          <img src={profile} alt="icone do perfil" />
-          Perfil
-        </p>
-        <p>
-          <img src={more} alt="icone de mais" />
-          Mais
-        </p>
-      </Menu>
-      <button onClick={handlePostClick} title="postar" type="button">
-        Postar
-      </button>
-      {user && (
-        <Profile>
-          <div>
-            <UserAvatar />
-            <ProfileName>{user.username}</ProfileName>
-          </div>
-          <img
-            onClick={handleLogout}
-            src={closeUser}
-            alt="icone para sair do perfil"
-          />
-        </Profile>
+    <>
+      <Header>
+        <Menu>
+          <h1>
+            <img src={logo} alt="logo X" />
+          </h1>
+          <p>
+            <img src={home} alt="icone de home" />
+            Página Inicial
+          </p>
+          <p>
+            <img src={magnifier} alt="icone de explorar" />
+            Explorar
+          </p>
+          <p>
+            <img src={bell} alt="icone de notificação" />
+            Notificações
+          </p>
+          <p>
+            <img src={letter} alt="icone de mensagens" />
+            Mensagens
+          </p>
+          <p>
+            <img src={grok} alt="icone do grok" />
+            Grok
+          </p>
+          <p>
+            <img src={tape} alt="icone de itens salvos" />
+            Itens salvos
+          </p>
+          <p>
+            <img src={community} alt="icone comunidade" />
+            Comunidades
+          </p>
+          <p>
+            <img src={cloud} alt="icone do premium" />
+            Premium
+          </p>
+          <p>
+            <img src={ray} alt="icone do organizações verificadas" />
+            Organizações Ve...
+          </p>
+          <p className="hover" onClick={() => openModal()}>
+            <img src={profile} alt="icone do perfil" />
+            Perfil
+          </p>
+          <p>
+            <img src={more} alt="icone de mais" />
+            Mais
+          </p>
+        </Menu>
+        <button onClick={handleTopClick} title="Sunbir" type="button">
+          Subir
+        </button>
+        {user && (
+          <Profile>
+            <div>
+              <UserAvatar />
+              <ProfileName>{user.username}</ProfileName>
+            </div>
+            <img
+              onClick={handleLogout}
+              src={closeUser}
+              alt="icone para sair do perfil"
+            />
+          </Profile>
+        )}
+      </Header>
+      {isOpenModal && (
+        <ModalWrapper>
+          <ModalContent>
+            <div>
+              <img src={closeIcon} alt="Fechar aba" onClick={closeModal} />
+            </div>
+            <AccountSettings />
+          </ModalContent>
+          <div className="overlay" onClick={closeModal}></div>
+        </ModalWrapper>
       )}
-    </Header>
+    </>
   )
 }
 

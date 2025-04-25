@@ -97,7 +97,11 @@ const Post = () => {
           <Section>
             <Actions>
               <li>
-                <img src={commentsIcon} alt="Comentários" />
+                <img
+                  className="hover-action"
+                  src={commentsIcon}
+                  alt="Comentários"
+                />
                 <span>{tweet.comments_count}</span>
               </li>
               <li>
@@ -106,6 +110,7 @@ const Post = () => {
               </li>
               <li>
                 <img
+                  className="hover-action"
                   onClick={() => handleLike(tweet.id)}
                   src={tweet.is_liked ? heartIconRed : heartIcon}
                   alt="Curtidas"
@@ -160,7 +165,7 @@ const Post = () => {
                     {'· ' + formatRelativeDate(comment.created_at)}
                   </p>
                 </div>
-                <p className="padding-left">{comment.content}</p>
+                <p className="padding-left margin-tp">{comment.content}</p>
               </Section>
             </Content>
           )

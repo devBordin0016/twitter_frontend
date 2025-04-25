@@ -34,7 +34,13 @@ export const Menu = styled.div`
     font-size: 20px;
     display: flex;
     align-items: center;
-
+    border-radius: 24px;
+    &.hover {
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
     img {
       width: 26px;
       margin-right: 16px;

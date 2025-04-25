@@ -60,7 +60,7 @@ type CommentPayload = {
 }
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: '	http://localhost:8000/api',
+    baseUrl: 'https://vitorbri.pythonanywhere.com/api',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('access_token')
       if (token) {
@@ -117,6 +117,14 @@ const api = createApi({
     }),
     getCurrentUser: builder.query<RegisterResponse, void>({
       query: () => 'users/me/'
+    }),
+    updateUser: builder.mutation<RegisterResponse, Partial<UserPayload>>({
+      query: (body) => ({
+        url: 'users/me/',
+        method: 'PATCH',
+        body
+      }),
+      invalidatesTags: ['Users']
     }),
     getAllUsers: builder.query<UserResponse[], void>({
       query: () => 'users/',
@@ -181,7 +189,8 @@ export const {
   useLikeTweetMutation,
   useGetTweetQuery,
   useCreateCommentMutation,
-  useGetCommentsQuery
+  useGetCommentsQuery,
+  useUpdateUserMutation
 } = api
 
 export default api
