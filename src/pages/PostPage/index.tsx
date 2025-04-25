@@ -3,12 +3,18 @@ import BarLeft from '../../components/BarLeft'
 import BarRight from '../../components/BarRight'
 import Loader from '../../components/Loader'
 import Post from '../../components/Post'
-import { useGetCurrentUserQuery } from '../../services/api'
+import { useGetCommentsQuery } from '../../services/api'
 import { Container, MainContainer } from '../Feed/styles'
+import { useParams } from 'react-router-dom'
 
 const PostPage = () => {
-  0
-  const { isLoading } = useGetCurrentUserQuery()
+  const { id } = useParams()
+  const tweetId = Number(id)
+
+  const { isLoading } = useGetCommentsQuery(tweetId || -1, {
+    skip: !tweetId
+  })
+
   const [showLoader, setShowLoader] = useState(true)
 
   useEffect(() => {

@@ -27,7 +27,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   }
 
   &:disabled {
-    opacity: 0.5;
+    background-color: ${colors.darkGray};
     cursor: default;
   }
 `

@@ -45,6 +45,15 @@ export const GlobalCss = createGlobalStyle`
     padding: 8px 0;
   }
 
+  .hover-action{
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 1px 6px rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
+      }
+  }
+
 `
 export const InputGlobal = styled.div`
   position: relative;
@@ -112,5 +121,46 @@ export const MainContent = styled.div`
   border-left: 1px solid ${colors.gray};
   border-right: 1px solid ${colors.gray};
   flex-direction: column;
+`
+export const ModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+`
+
+export const ModalContent = styled.div`
   position: relative;
+  z-index: 1;
+  background: ${colors.white};
+  border-radius: 16px;
+  max-width: 542px;
+  max-height: 600px;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+
+  img {
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 24px;
+    }
+  }
 `

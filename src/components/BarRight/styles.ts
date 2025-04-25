@@ -7,7 +7,6 @@ export const Container = styled.div`
 
   > div {
     max-width: 360px;
-    position: fixed;
   }
 `
 

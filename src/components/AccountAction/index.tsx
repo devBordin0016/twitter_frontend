@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { colors } from '../../styles'
+import { colors, ModalContent, ModalWrapper } from '../../styles'
 import Button from '../Button'
 import closeIcon from '../../assets/close.svg'
 import logo from '../../assets/icon.svg'
@@ -47,8 +47,8 @@ const AccountAction = () => {
       </Button>
 
       {isOpenModal && (
-        <S.ModalWrapper>
-          <S.ModalContent>
+        <ModalWrapper>
+          <ModalContent>
             <S.CloseBar>
               <img src={closeIcon} alt="Fechar aba" onClick={closeModal} />
               <S.LogoImg src={logo} alt="Logo X" />
@@ -64,9 +64,9 @@ const AccountAction = () => {
             ) : (
               <Signup />
             )}
-          </S.ModalContent>
+          </ModalContent>
           <div className="overlay" onClick={closeModal}></div>
-        </S.ModalWrapper>
+        </ModalWrapper>
       )}
     </S.Container>
   )

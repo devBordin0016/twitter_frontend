@@ -47,7 +47,6 @@ const Signup = () => {
     return ''
   }
 
-  console.log(error)
 
   return (
     <S.Content>

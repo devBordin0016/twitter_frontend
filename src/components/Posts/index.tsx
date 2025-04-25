@@ -88,6 +88,7 @@ const Posts = () => {
               <S.TweetActions>
                 <div>
                   <img
+                    className="hover-action"
                     src={commentsIcon}
                     alt="Comentários"
                     onClick={() => navigate(`/tweet/${tweet.id}`)}
@@ -100,6 +101,7 @@ const Posts = () => {
                 </div>
                 <div>
                   <img
+                    className="hover-action"
                     onClick={() => handleLike(tweet.id)}
                     src={tweet.is_liked ? heartIconRed : heartIcon}
                     alt="Curtidas"
@@ -118,7 +120,7 @@ const Posts = () => {
     })
 
   return (
-    <MainContent id="postar">
+    <MainContent>
       <S.SelectPostsWrapper>
         <S.SelectPosts>
           <button
@@ -152,16 +154,18 @@ const Posts = () => {
               maxLength={220}
             />
           </S.TweetInputWrapper>
-          <Button
-            onClick={handlePostTweet}
-            type="button"
-            bgColor={colors.black}
-            title="Postar"
-            textColor={colors.white}
-            disabled={text.length < 1}
-          >
-            Postar
-          </Button>
+          <div className="wrapper">
+            <Button
+              onClick={handlePostTweet}
+              type="button"
+              bgColor={colors.black}
+              title="Postar"
+              textColor={colors.white}
+              disabled={text.length < 1}
+            >
+              Postar
+            </Button>
+          </div>
         </S.TweetSections>
       </S.TweetContainer>
 

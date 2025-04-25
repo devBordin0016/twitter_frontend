@@ -3,10 +3,8 @@ import styled from 'styled-components'
 import { colors } from '../../styles'
 
 export const FixedTop = styled.div`
-  position: sticky;
   top: 0;
   background: ${transparentize(0.05, colors.white)};
-  z-index: 1;
   display: flex;
   padding: 8px;
   align-items: center;
@@ -32,6 +30,10 @@ export const FixedTop = styled.div`
 export const Section = styled.div`
   .font {
     font-size: 15px;
+  }
+
+  .margin-tp {
+    margin-top: 8px;
   }
 `
 
@@ -67,13 +69,7 @@ export const Actions = styled.ul`
     width: 100%;
 
     img {
-      cursor: pointer;
       width: 20px;
-      &:hover {
-        box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.2);
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 16px;
-      }
     }
 
     span {
