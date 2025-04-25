@@ -50,7 +50,7 @@ const BarLeft = () => {
           <h1>
             <img src={logo} alt="logo X" />
           </h1>
-          <p>
+          <p onClick={() => navigate('/feed')} className="hover">
             <img src={home} alt="icone de home" />
             Página Inicial
           </p>
