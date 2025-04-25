@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { colors, InputGlobal } from '../../styles'
 import Button from '../Button'
-import { Content, Title } from './styles'
+import { Content, SubTitle, Title } from './styles'
 import {
   useUpdateUserMutation,
   useGetCurrentUserQuery
@@ -68,6 +68,7 @@ const AccountSettings = () => {
         </Button>
       </div>
       <form onSubmit={form.handleSubmit}>
+        <SubTitle>Renomear</SubTitle>
         <InputGlobal>
           <input
             type="text"
@@ -80,6 +81,7 @@ const AccountSettings = () => {
           <label htmlFor="username">Renomear usuário</label>
           <small>{getError('username')}</small>
         </InputGlobal>
+        <SubTitle>Trocar senha</SubTitle>
         <InputGlobal>
           <input
             type="password"

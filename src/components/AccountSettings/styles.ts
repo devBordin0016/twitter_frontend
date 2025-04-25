@@ -23,7 +23,12 @@ export const Content = styled.div`
     max-width: 320px;
   }
 `
-export const Title = styled.h4`
+export const Title = styled.p`
   font-size: 26px;
+  font-weight: 700;
+`
+export const SubTitle = styled.p`
+  margin: 0 auto 8px;
+  font-size: 20px;
   font-weight: 700;
 `
