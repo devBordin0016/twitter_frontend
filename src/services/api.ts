@@ -60,7 +60,7 @@ type CommentPayload = {
 }
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: '	http://localhost:8000/api',
+    baseUrl: 'https://vitorbri.pythonanywhere.com/api',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('access_token')
       if (token) {
