@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useGetCurrentUserQuery } from '../../services/api'
-import { Header, Menu, Profile } from './styles'
+import * as S from './styles'
 import { ModalContent, ModalWrapper, ProfileName } from '../../styles'
 
 import logo from '../../assets/icon.svg'
@@ -16,10 +16,11 @@ import ray from '../../assets/ray.svg'
 import cloud from '../../assets/cloud.svg'
 import community from '../../assets/community.svg'
 import closeUser from '../../assets/closeUser.svg'
-import UserAvatar from '../UserAvatar'
 import closeIcon from '../../assets/close.svg'
-import { useState } from 'react'
+
+import UserAvatar from '../UserAvatar'
 import AccountSettings from '../AccountSettings'
+import { useState } from 'react'
 
 const BarLeft = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -45,73 +46,77 @@ const BarLeft = () => {
 
   return (
     <>
-      <Header>
-        <Menu>
+      <S.Header>
+        <S.Menu>
           <h1>
             <img src={logo} alt="logo X" />
           </h1>
-          <p onClick={() => navigate('/feed')} className="hover">
-            <img src={home} alt="icone de home" />
-            Página Inicial
-          </p>
-          <p>
-            <img src={magnifier} alt="icone de explorar" />
-            Explorar
-          </p>
-          <p>
-            <img src={bell} alt="icone de notificação" />
-            Notificações
-          </p>
-          <p>
-            <img src={letter} alt="icone de mensagens" />
-            Mensagens
-          </p>
-          <p>
-            <img src={grok} alt="icone do grok" />
-            Grok
-          </p>
-          <p>
-            <img src={tape} alt="icone de itens salvos" />
-            Itens salvos
-          </p>
-          <p>
-            <img src={community} alt="icone comunidade" />
-            Comunidades
-          </p>
-          <p>
-            <img src={cloud} alt="icone do premium" />
-            Premium
-          </p>
-          <p>
-            <img src={ray} alt="icone do organizações verificadas" />
-            Organizações Ve...
-          </p>
-          <p className="hover" onClick={() => openModal()}>
-            <img src={profile} alt="icone do perfil" />
-            Perfil
-          </p>
-          <p>
-            <img src={more} alt="icone de mais" />
-            Mais
-          </p>
-        </Menu>
-        <button onClick={handleTopClick} title="Sunbir" type="button">
+          <S.MenuItem
+            onClick={() => navigate('/feed')}
+            className="hover-action"
+          >
+            <img src={home} alt="home" />
+            <S.MenuLabel>Página Inicial</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={magnifier} alt="explorar" />
+            <S.MenuLabel>Explorar</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={bell} alt="notificação" />
+            <S.MenuLabel>Notificações</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={letter} alt="mensagens" />
+            <S.MenuLabel>Mensagens</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={grok} alt="grok" />
+            <S.MenuLabel>Mensagens</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={tape} alt="itens salvos" />
+            <S.MenuLabel>Itens salvos</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={community} alt="comunidade" />
+            <S.MenuLabel>Comunidades</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={cloud} alt="premium" />
+            <S.MenuLabel>Premium</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={ray} alt="organizações verificadas" />
+            <S.MenuLabel>Organizações Ve...</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem className="hover-action" onClick={openModal}>
+            <img src={profile} alt="perfil" />
+            <S.MenuLabel>Perfil</S.MenuLabel>
+          </S.MenuItem>
+          <S.MenuItem>
+            <img src={more} alt="mais opções" />
+            <S.MenuLabel>Mais</S.MenuLabel>
+          </S.MenuItem>
+        </S.Menu>
+        <button onClick={handleTopClick} title="Subir" type="button">
           Subir
         </button>
         {user && (
-          <Profile>
+          <S.Profile>
             <div>
               <UserAvatar />
               <ProfileName>{user.username}</ProfileName>
             </div>
             <img
+              className="hover-action"
               onClick={handleLogout}
               src={closeUser}
-              alt="icone para sair do perfil"
+              alt="sair do perfil"
             />
-          </Profile>
+          </S.Profile>
         )}
-      </Header>
+      </S.Header>
       {isOpenModal && (
         <ModalWrapper>
           <ModalContent>

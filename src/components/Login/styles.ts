@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Content = styled.div`
-  margin: 0 136px;
+  max-width: 248px;
+  margin: 0 auto;
 
   span {
     display: inline-block;

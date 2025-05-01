@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Header = styled.header`
   position: fixed;
@@ -18,33 +18,50 @@ export const Header = styled.header`
     border: none;
     border-radius: 24px;
     cursor: pointer;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      display: none;
+    }
   }
 `
 
 export const Menu = styled.div`
   h1 {
     padding: 8px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      justify-content: center;
+      display: flex;
+    }
+
     img {
-      width: 26px;
+      width: 28px;
     }
   }
+`
 
-  p {
-    padding: 12px 8px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    border-radius: 24px;
-    &.hover {
-      cursor: pointer;
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-      }
+export const MenuItem = styled.div`
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+
+  img {
+    width: 26px;
+    margin-right: 16px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      margin-right: 0;
+      width: 24px;
     }
-    img {
-      width: 26px;
-      margin-right: 16px;
-    }
+  }
+`
+
+export const MenuLabel = styled.span`
+  font-size: 20px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    display: none;
   }
 `
 
@@ -58,15 +75,14 @@ export const Profile = styled.div`
   > div {
     display: flex;
     align-items: center;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      display: none;
+    }
   }
 
   img {
-    width: 40px;
-    padding: 8px;
+    width: 26px;
     cursor: pointer;
-    border-radius: 50%;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
   }
 `

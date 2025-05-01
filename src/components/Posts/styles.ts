@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { transparentize } from 'polished'
 
 export const SelectPostsWrapper = styled.div`
@@ -13,6 +13,10 @@ export const SelectPostsWrapper = styled.div`
 export const SelectPosts = styled.div`
   width: 100%;
   display: flex;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 
   button {
     flex: 1;
@@ -37,7 +41,7 @@ export const SelectPosts = styled.div`
   }
 `
 
-export const TweetSections = styled.div`
+export const Sections = styled.div`
   padding-top: 8px;
   width: 100%;
 
@@ -61,14 +65,14 @@ export const TweetSections = styled.div`
   }
 `
 
-export const TweetContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   padding: 8px 16px;
   display: flex;
   border-bottom: 1px solid ${colors.gray};
 `
 
-export const TweetInputWrapper = styled.div`
+export const InputWrapper = styled.div`
   width: 100%;
   padding: 8px 8px 40px;
   border-bottom: 1px solid ${colors.gray};
@@ -86,13 +90,13 @@ export const TweetInputWrapper = styled.div`
   }
 `
 
-export const TweetMeta = styled.div`
+export const Meta = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `
 
-export const TweetActions = styled.div`
+export const Actions = styled.div`
   display: flex;
   padding: 0 8px;
   margin-top: 24px;
@@ -115,7 +119,7 @@ export const TweetActions = styled.div`
   }
 `
 
-export const TweetContent = styled.p`
+export const Content = styled.p`
   margin: 8px 0 8px 8px;
   font-size: 15px;
   width: 100%;
