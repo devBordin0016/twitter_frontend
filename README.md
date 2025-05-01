@@ -1,37 +1,39 @@
 # Twitter Clone - Front-end
 
-Interface do usuário para um clone do Twitter, desenvolvido com React e TypeScript. Permite login, criação de tweets, seguir usuários e visualizar um feed personalizado.
+Interface do usuário para um clone do Twitter, desenvolvido com **React** e **TypeScript**. Permite login, criação de tweets, seguir usuários, visualizar um feed personalizado e editar informações do perfil.
 
-## Tecnologias
+## 🔧 Tecnologias
 
-- React (Vite)
-- TypeScript
-- Styled-Components
-- Redux Toolkit + RTK Query
-- Formik + Yup
-- JWT (armazenado no localStorage)
+- **React (Vite)**
+- **TypeScript**
+- **Styled-Components**
+- **Redux Toolkit + RTK Query**
+- **Formik + Yup**
+- **JWT (armazenado no localStorage)**
 
-## Funcionalidades
+## 🚀 Funcionalidades
 
 - Login e registro de usuários  
-- Listagem de tweets  
-- Criação de tweets  
-- Seguir e deixar de seguir outros usuários  
+- Listagem e criação de tweets  
+- Curtir e comentar tweets  
+- Seguir e deixar de seguir usuários  
 - Feed com tweets de usuários seguidos  
-- Sugestão de perfis  
-- Decodificação do JWT para manter estado do usuário  
+- Sugestão de perfis para seguir  
+- Decodificação do JWT para manter estado do usuário logado  
+- Edição de perfil (renomear e trocar senha)  
 
-## Integração com API
+## 🌐 Integração com API
 
-A aplicação consome uma API RESTful desenvolvida com Django REST Framework, utilizando autenticação via JWT. Toda a comunicação com o back-end é feita com RTK Query, que também gerencia o cache e estado global da aplicação.
+A aplicação consome uma **API RESTful** desenvolvida com Django REST Framework.  
+A autenticação é feita via **JWT**, e toda a comunicação com o back-end é gerenciada com **RTK Query**, que também controla cache e estado global.
 
-## Layout
+## 🖼️ Layout
 
-- Sidebar esquerda com informações do perfil  
-- Área central com os tweets  
-- Sidebar direita com sugestões de perfis  
+- **BarLeft**: menu de navegação e informações do usuário  
+- **MainContainer**: feed principal com tweets e comentários  
+- **BarRight**: sugestões de perfis e funcionalidades futuras  
 
-## Instalação
+## 📦 Instalação
 
 ```bash
 # Clone o repositório
@@ -43,3 +45,4 @@ npm install
 
 # Rode o projeto
 npm run dev
+
