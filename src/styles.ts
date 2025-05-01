@@ -49,14 +49,18 @@ export const GlobalCss = createGlobalStyle`
     padding: 8px 0;
   }
 
-  .hover-action{
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2);
-        background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 24px;
+  @media (min-width: ${breakpoints.desktop}) {
+    .hover-action{
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 24px;
+          }
       }
   }
+
+
 
 `
 export const InputGlobal = styled.div`
