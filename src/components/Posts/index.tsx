@@ -71,21 +71,21 @@ const Posts = () => {
       )
       return (
         <li key={tweet.id}>
-          <S.TweetContainer>
-            <S.TweetSections className="width-profile">
+          <S.Container>
+            <S.Sections className="width-profile">
               <ProfileAvatar style={{ backgroundColor: avatarColor }}>
                 {firstLetter}
               </ProfileAvatar>
-            </S.TweetSections>
-            <S.TweetSections>
-              <S.TweetMeta>
+            </S.Sections>
+            <S.Sections>
+              <S.Meta>
                 <ProfileName>{tweet.username}</ProfileName>
                 <p className="date">
                   {'· ' + formatRelativeDate(tweet.created_at)}
                 </p>
-              </S.TweetMeta>
-              <S.TweetContent>{tweet.content}</S.TweetContent>
-              <S.TweetActions>
+              </S.Meta>
+              <S.Content>{tweet.content}</S.Content>
+              <S.Actions>
                 <div>
                   <img
                     className="hover-action"
@@ -112,9 +112,9 @@ const Posts = () => {
                   <img src={statisticIcon} alt="Visualizações" />
                   <span>0</span>
                 </div>
-              </S.TweetActions>
-            </S.TweetSections>
-          </S.TweetContainer>
+              </S.Actions>
+            </S.Sections>
+          </S.Container>
         </li>
       )
     })
@@ -140,12 +140,12 @@ const Posts = () => {
         </S.SelectPosts>
       </S.SelectPostsWrapper>
 
-      <S.TweetContainer>
-        <S.TweetSections className="width-profile">
+      <S.Container>
+        <S.Sections className="width-profile">
           <UserAvatar />
-        </S.TweetSections>
-        <S.TweetSections className="text-width">
-          <S.TweetInputWrapper>
+        </S.Sections>
+        <S.Sections className="text-width">
+          <S.InputWrapper>
             <textarea
               ref={textareaRef}
               value={text}
@@ -153,7 +153,7 @@ const Posts = () => {
               placeholder="O que está acontecendo?"
               maxLength={220}
             />
-          </S.TweetInputWrapper>
+          </S.InputWrapper>
           <div className="wrapper">
             <Button
               onClick={handlePostTweet}
@@ -166,8 +166,8 @@ const Posts = () => {
               Postar
             </Button>
           </div>
-        </S.TweetSections>
-      </S.TweetContainer>
+        </S.Sections>
+      </S.Container>
 
       {activeTab === 'forYou' && (
         <ul>{isLoadingForYou ? <Loader /> : renderTweets(forYouTweets)}</ul>

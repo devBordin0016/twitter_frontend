@@ -7,10 +7,13 @@ const Entry = () => (
   <>
     <div>
       <SplitLayout>
-        <Logo>
+        <Logo className="desktop-logo">
           <img src={logo} alt="logo X" />
         </Logo>
         <SectionLoguin>
+          <div className="mobile-logo">
+            <img src={logo} alt="logo X" />
+          </div>
           <h2>Acontecendo agora</h2>
           <AccountAction />
         </SectionLoguin>

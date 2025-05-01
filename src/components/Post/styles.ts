@@ -2,7 +2,7 @@ import { transparentize } from 'polished'
 import styled from 'styled-components'
 import { colors } from '../../styles'
 
-export const FixedTop = styled.div`
+export const TopBar = styled.div`
   top: 0;
   background: ${transparentize(0.05, colors.white)};
   display: flex;
@@ -51,6 +51,7 @@ export const Meta = styled.div`
     color: ${colors.darkGray};
   }
 `
+
 export const Actions = styled.ul`
   display: flex;
   padding: 14px 0;
@@ -58,9 +59,6 @@ export const Actions = styled.ul`
   justify-content: space-between;
   border-top: 1px solid ${colors.gray};
   border-bottom: 1px solid ${colors.gray};
-
-  div {
-  }
 
   li {
     display: flex;
@@ -77,6 +75,7 @@ export const Actions = styled.ul`
     }
   }
 `
+
 export const InputComment = styled.div`
   width: 100%;
   padding: 8px 0 0;

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Container = styled.div`
   max-width: 360px;
@@ -7,6 +7,10 @@ export const Container = styled.div`
 
   > div {
     max-width: 360px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
   }
 `
 

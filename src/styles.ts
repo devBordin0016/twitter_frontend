@@ -7,6 +7,10 @@ export const colors = {
   gray: '#dadce0',
   darkGray: '#787a7a'
 }
+export const breakpoints = {
+  desktop: '1024px ',
+  tablet: '768px'
+}
 
 export const GlobalCss = createGlobalStyle`
   *{
@@ -24,7 +28,7 @@ export const GlobalCss = createGlobalStyle`
   }
 
   .date {
-    margin-left: 4px;
+    margin-left:4px;
     padding-top: 2px;
     font-size: 14px;
     color: ${colors.darkGray};
@@ -48,9 +52,9 @@ export const GlobalCss = createGlobalStyle`
   .hover-action{
     &:hover {
         cursor: pointer;
-        box-shadow: 0 0 1px 6px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2);
         background-color: rgba(0, 0, 0, 0.2);
-        border-radius: 16px;
+        border-radius: 24px;
       }
   }
 
@@ -162,5 +166,12 @@ export const ModalContent = styled.div`
       background-color: rgba(0, 0, 0, 0.2);
       border-radius: 24px;
     }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+    padding: 16px 12px;
   }
 `
