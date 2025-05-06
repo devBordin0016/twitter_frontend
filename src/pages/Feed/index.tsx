@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useGetCurrentUserQuery } from '../../services/api'
+import { useGetCurrentUserQuery } from '../../services/auth.api'
 import BarLeft from '../../components/BarLeft'
 import BarRight from '../../components/BarRight'
 import Posts from '../../components/Posts'
-import Loader from '../../components/Loader'
+import { Loader1 } from '../../components/Loaders'
 import { Container, MainContainer } from './styles'
 
 const Feed = () => {
@@ -27,7 +27,7 @@ const Feed = () => {
   return (
     <>
       {showLoader ? (
-        <Loader />
+        <Loader1 />
       ) : (
         <Container>
           <BarLeft />

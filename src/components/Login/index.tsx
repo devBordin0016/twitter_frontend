@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import {
   useLazyGetCurrentUserQuery,
   useLoginMutation
-} from '../../services/api'
+} from '../../services/auth.api'
 
 import { colors, InputGlobal } from '../../styles'
 import Button from '../Button'

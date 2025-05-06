@@ -1,4 +1,4 @@
-import { useGetCurrentUserQuery } from '../../services/api'
+import { useGetCurrentUserQuery } from '../../services/auth.api'
 import { ProfileAvatar } from '../../styles'
 import { getFirstLetterAndColor } from '../../utils'
 

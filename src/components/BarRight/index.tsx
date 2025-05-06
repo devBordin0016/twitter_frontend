@@ -1,14 +1,16 @@
 import {
   useFollowUserMutation,
   useGetAllUsersQuery,
-  useGetCurrentUserQuery,
   useUnfollowUserMutation
-} from '../../services/api'
+} from '../../services/user.api'
+
+import { useGetCurrentUserQuery } from '../../services/auth.api'
+
 import { colors, ProfileAvatar, ProfileName } from '../../styles'
 import Button from '../Button'
 import * as S from './styles'
 
-import type { UserResponse } from '../../services/api'
+import type { UserResponse } from '../../services/user.api'
 import { getFirstLetterAndColor } from '../../utils'
 
 const BarRight = () => {

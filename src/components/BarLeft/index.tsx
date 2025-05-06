@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useGetCurrentUserQuery } from '../../services/api'
+import { useGetCurrentUserQuery } from '../../services/auth.api'
 import * as S from './styles'
 import { ModalContent, ModalWrapper, ProfileName } from '../../styles'
 
