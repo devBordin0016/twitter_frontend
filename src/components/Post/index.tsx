@@ -6,10 +6,14 @@ import Button from '../Button'
 import UserAvatar from '../UserAvatar'
 import {
   useCreateCommentMutation,
-  useGetCommentsQuery,
+  useGetCommentsQuery
+} from '../../services/comment.api'
+
+import {
   useGetTweetQuery,
   useLikeTweetMutation
-} from '../../services/api'
+} from '../../services/tweet.api'
+
 import { formatRelativeDate, getFirstLetterAndColor } from '../../utils'
 
 import shareIcon from '../../assets/share.svg'
@@ -20,6 +24,7 @@ import commentsIcon from '../../assets/comments.svg'
 import arrow from '../../assets/arrow.svg'
 
 import * as S from './styles'
+import { Loader2 } from '../Loaders'
 
 const Post = () => {
   const [text, setText] = useState('')
@@ -39,7 +44,7 @@ const Post = () => {
   const { data: tweet } = useGetTweetQuery(tweetId)
 
   if (!tweet) {
-    return <p>Loading...</p>
+    return <Loader2 />
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

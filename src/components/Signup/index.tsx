@@ -7,7 +7,7 @@ import { colors, InputGlobal } from '../../styles'
 import Button from '../Button'
 import * as S from './styles'
 
-import { useRegisterMutation } from '../../services/api'
+import { useRegisterMutation } from '../../services/auth.api'
 
 const Signup = () => {
   const [register, { isError, isSuccess, error }] = useRegisterMutation()

@@ -7,7 +7,7 @@ import { Content, SubTitle, Title } from './styles'
 import {
   useUpdateUserMutation,
   useGetCurrentUserQuery
-} from '../../services/api'
+} from '../../services/auth.api'
 
 const AccountSettings = () => {
   const { data: currentUser } = useGetCurrentUserQuery()

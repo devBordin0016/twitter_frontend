@@ -10,7 +10,7 @@ import {
   useGetFollowingTweetsQuery,
   useCreateTweetMutation,
   useLikeTweetMutation
-} from '../../services/api'
+} from '../../services/tweet.api'
 
 import shareIcon from '../../assets/share.svg'
 import statisticIcon from '../../assets/statistic.svg'
@@ -19,7 +19,7 @@ import heartIconRed from '../../assets/heartRed.svg'
 import commentsIcon from '../../assets/comments.svg'
 
 import * as S from './styles'
-import Loader from '../Loader'
+import { Loader2 } from '../Loaders'
 import UserAvatar from '../UserAvatar'
 import { useNavigate } from 'react-router-dom'
 
@@ -170,12 +170,12 @@ const Posts = () => {
       </S.Container>
 
       {activeTab === 'forYou' && (
-        <ul>{isLoadingForYou ? <Loader /> : renderTweets(forYouTweets)}</ul>
+        <ul>{isLoadingForYou ? <Loader2 /> : renderTweets(forYouTweets)}</ul>
       )}
 
       {activeTab === 'following' && (
         <ul>
-          {isLoadingFollowing ? <Loader /> : renderTweets(followingTweets)}
+          {isLoadingFollowing ? <Loader2 /> : renderTweets(followingTweets)}
         </ul>
       )}
     </MainContent>

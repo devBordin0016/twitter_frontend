@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import BarLeft from '../../components/BarLeft'
 import BarRight from '../../components/BarRight'
-import Loader from '../../components/Loader'
+import { Loader1 } from '../../components/Loaders'
 import Post from '../../components/Post'
-import { useGetCommentsQuery } from '../../services/api'
+import { useGetCommentsQuery } from '../../services/comment.api'
 import { Container, MainContainer } from '../Feed/styles'
 import { useParams } from 'react-router-dom'
 
@@ -34,7 +34,7 @@ const PostPage = () => {
   return (
     <>
       {showLoader ? (
-        <Loader />
+        <Loader1 />
       ) : (
         <Container>
           <BarLeft />
