@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
+import { breakpoints, colors, ProfileName } from '../../styles'
 
 export const Header = styled.header`
   position: fixed;
@@ -55,6 +55,18 @@ export const MenuItem = styled.div`
       width: 24px;
     }
   }
+
+  &.community-button {
+    @media (min-width: ${breakpoints.tablet}) {
+      pointer-events: none;
+    }
+  }
+
+  &.disable-item-mobile {
+    @media (max-width: ${breakpoints.tablet}) {
+      display: none;
+    }
+  }
 `
 
 export const MenuLabel = styled.span`
@@ -72,12 +84,29 @@ export const Profile = styled.div`
   padding: 0 8px;
   justify-content: space-between;
 
-  > div {
-    display: flex;
-    align-items: center;
+  @media (max-width: ${breakpoints.desktop}) {
+    display: inline-block;
+    position: fixed;
+    padding: 0;
+    bottom: 0;
 
-    @media (max-width: ${breakpoints.desktop}) {
-      display: none;
+    > div {
+      margin-bottom: 32px;
+
+      ${ProfileName} {
+        display: none;
+      }
+    }
+
+    img{
+      margin-left: 8px;
+      margin-bottom: 8px;
+    }
+  }
+
+  > div {
+      display: flex;
+      align-items: center;
     }
   }
 

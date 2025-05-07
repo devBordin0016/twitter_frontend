@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, colors } from '../../styles'
+import { colors } from '../../styles'
 import { transparentize } from 'polished'
 
 export const SelectPostsWrapper = styled.div`
@@ -13,10 +13,6 @@ export const SelectPostsWrapper = styled.div`
 export const SelectPosts = styled.div`
   width: 100%;
   display: flex;
-
-  @media (max-width: ${breakpoints.tablet}) {
-    display: none;
-  }
 
   button {
     flex: 1;
