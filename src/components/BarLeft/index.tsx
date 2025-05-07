@@ -14,25 +14,29 @@ import home from '../../assets/home.svg'
 import tape from '../../assets/tape.svg'
 import ray from '../../assets/ray.svg'
 import cloud from '../../assets/cloud.svg'
-import community from '../../assets/community.svg'
+import communit from '../../assets/community.svg'
 import closeUser from '../../assets/closeUser.svg'
 import closeIcon from '../../assets/close.svg'
 
 import UserAvatar from '../UserAvatar'
 import AccountSettings from '../AccountSettings'
+import Community from '../Community'
 import { useState } from 'react'
 
 const BarLeft = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
+  const [modalContent, setModalContent] = useState('') // Estado para definir o conteúdo da modal
   const { data: user } = useGetCurrentUserQuery()
   const navigate = useNavigate()
 
-  const openModal = () => {
+  const openModal = (content: string) => {
+    setModalContent(content) // Define o conteúdo da modal
     setIsOpenModal(true)
   }
 
   const closeModal = () => {
     setIsOpenModal(false)
+    setModalContent('') // Limpa o conteúdo da modal quando fechada
   }
 
   const handleLogout = () => {
@@ -58,43 +62,49 @@ const BarLeft = () => {
             <img src={home} alt="home" />
             <S.MenuLabel>Página Inicial</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={magnifier} alt="explorar" />
             <S.MenuLabel>Explorar</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={bell} alt="notificação" />
             <S.MenuLabel>Notificações</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={letter} alt="mensagens" />
             <S.MenuLabel>Mensagens</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={grok} alt="grok" />
             <S.MenuLabel>Mensagens</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={tape} alt="itens salvos" />
             <S.MenuLabel>Itens salvos</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
-            <img src={community} alt="comunidade" />
-            <S.MenuLabel>Comunidades</S.MenuLabel>
+          <S.MenuItem
+            className="community-button"
+            onClick={() => openModal('community')}
+          >
+            <img src={communit} alt="comunidade" />
+            <S.MenuLabel>Comunidade</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={cloud} alt="premium" />
             <S.MenuLabel>Premium</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={ray} alt="organizações verificadas" />
             <S.MenuLabel>Organizações Ve...</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem className="hover-action" onClick={openModal}>
+          <S.MenuItem
+            className="hover-action"
+            onClick={() => openModal('account')}
+          >
             <img src={profile} alt="perfil" />
             <S.MenuLabel>Perfil</S.MenuLabel>
           </S.MenuItem>
-          <S.MenuItem>
+          <S.MenuItem className="disable-item-mobile ">
             <img src={more} alt="mais opções" />
             <S.MenuLabel>Mais</S.MenuLabel>
           </S.MenuItem>
@@ -117,13 +127,15 @@ const BarLeft = () => {
           </S.Profile>
         )}
       </S.Header>
+
       {isOpenModal && (
         <ModalWrapper>
           <ModalContent>
             <div>
               <img src={closeIcon} alt="Fechar aba" onClick={closeModal} />
             </div>
-            <AccountSettings />
+            {modalContent === 'account' && <AccountSettings />}
+            {modalContent === 'community' && <Community />}
           </ModalContent>
           <div className="overlay" onClick={closeModal}></div>
         </ModalWrapper>
